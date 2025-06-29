@@ -2,6 +2,7 @@ import React from 'react'
 import { FaCog, FaMoon } from 'react-icons/fa'
 
 const Header = () => {
+  
   return (
     <div className='p-[1rem] flex justify-between items-center'>
   <p className='text-2xl font-bold'>TIME TRACER DASHBOARD</p>

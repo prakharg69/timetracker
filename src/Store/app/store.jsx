@@ -3,6 +3,6 @@ import timeDataReducer from "../features/Timedata"
 
 export const  store = configureStore({
     reducer:{
-        timedata:timeDataReducer,
+        timedataa:timeDataReducer,
     }
 })
