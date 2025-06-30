@@ -1,15 +1,21 @@
 import React, { useEffect } from "react";
 import { FcReuse } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
-import { generateTimedata } from "./timepredata";
 import { AddData } from "../Store/features/Timedata";
+import { generateTimedata } from "./timepredata";
+
 
 const Dasbord = () => {
   const { TimeData } = useSelector((state) => state.timedataa);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(AddData(generateTimedata()));
-  }, []);
+  const dispatch = useDispatch()
+useEffect(() => {
+  dispatch(AddData(generateTimedata()));
+}, []);
+useEffect(() => {
+ console.log(TimeData);
+}, [TimeData]);
+
+  
 
   return (
     <div className="p-[1rem] flex gap-1">

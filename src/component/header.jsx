@@ -1,14 +1,16 @@
 import React from 'react'
 import { FaCog, FaMoon } from 'react-icons/fa'
+import { useGlobalData } from '../context/global'
 
 const Header = () => {
+  const {setShowForm} = useGlobalData()
   
   return (
     <div className='p-[1rem] flex justify-between items-center'>
   <p className='text-2xl font-bold'>TIME TRACER DASHBOARD</p>
 
   <div className="flex items-center gap-2">
-    <button className='bg-white text-black p-[0.5rem] text-[1rem] font-medium cursor-pointer'>Add Time Period</button>
+    <button className='bg-white text-black p-[0.5rem] text-[1rem] font-medium cursor-pointer' onClick={()=> setShowForm(true)}>Add Time Period</button>
     <button className='bg-[#2A2A2A] text-white p-[0.5rem] text-[1rem] font-medium cursor-pointer'>Manage Categories</button>
     <button className='bg-[#494949] text-white p-[0.5rem] text-[1rem] font-medium cursor-pointer'>Reset Week (Test)</button>
 

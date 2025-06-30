@@ -2,8 +2,46 @@
 export function generateTimedata() {
   const today = new Date();
   const timedata = [];
+  const categoryStats = [
+  {
+    category: "Work",
+    totalTime: "",
+    totalMinutes: 0,
+    totalActivity: 0
+  },
+  {
+    category: "No Category",
+    totalTime: "",
+    totalMinutes: 0,
+    totalActivity: 0
+  },
+  {
+    category: "Personal",
+    totalTime: "",
+    totalMinutes: 0,
+    totalActivity: 0
+  },
+  {
+    category: "Health & Fitness",
+    totalTime: "",
+    totalMinutes: 0,
+    totalActivity: 0
+  },
+  {
+    category: "Learning",
+    totalTime: "",
+    totalMinutes: 0,
+    totalActivity: 0
+  },
+  {
+    category: "Workout",
+    totalTime: "",
+    totalMinutes: 0,
+    totalActivity: 0
+  }
+];
 
-  for (let i = 0; i < 365; i++) {
+  for (let i = 0; i < 7; i++) {
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + i);
     const year = tomorrow.getFullYear()
@@ -12,7 +50,7 @@ export function generateTimedata() {
     const month = tomorrow.toLocaleString('default', { month: 'short' });
 
     const arr = [];
-    for (let h = 6; h < 24; h++) {
+    for (let h = 6; h <=24; h++) {
       const slotStart = new Date(tomorrow);
       slotStart.setHours(h, 0, 0, 0);
 
@@ -44,7 +82,7 @@ export function generateTimedata() {
       Year:year ,
       activity: [],
       slots: arr,
-      summary: []
+      summary:categoryStats
     });
   }
 
@@ -56,5 +94,8 @@ export const Months = [
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
 ];
   const today = new Date();
+  const tom = new Date(today);
+  tom.setFullYear(tom.getFullYear()+1);
+  
 
- export const Year = today.getFullYear();
+ export const Year = [today.getFullYear(),tom.getFullYear()];
