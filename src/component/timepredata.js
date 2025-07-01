@@ -2,44 +2,39 @@
 export function generateTimedata() {
   const today = new Date();
   const timedata = [];
-  const categoryStats = [
-  {
-    category: "Work",
-    totalTime: "",
+  const categoryStats = {
+  "Work": {
+    totalTime: 0,
     totalMinutes: 0,
     totalActivity: 0
   },
-  {
-    category: "No Category",
-    totalTime: "",
+  "No Category": {
+    totalTime: 0,
     totalMinutes: 0,
     totalActivity: 0
   },
-  {
-    category: "Personal",
-    totalTime: "",
+  "Personal": {
+    totalTime: 0,
     totalMinutes: 0,
     totalActivity: 0
   },
-  {
-    category: "Health & Fitness",
-    totalTime: "",
+  "Health & Fitness": {
+    totalTime: 0,
     totalMinutes: 0,
     totalActivity: 0
   },
-  {
-    category: "Learning",
-    totalTime: "",
+  "Learning": {
+    totalTime: 0,
     totalMinutes: 0,
     totalActivity: 0
   },
-  {
-    category: "Workout",
-    totalTime: "",
+  "Workout": {
+    totalTime: 0,
     totalMinutes: 0,
     totalActivity: 0
   }
-];
+};
+
 
   for (let i = 0; i < 7; i++) {
     const tomorrow = new Date(today);
@@ -71,7 +66,8 @@ export function generateTimedata() {
         start: finalS,
         end: finalE,
         activityName: "",
-        category: ""
+        category: "",
+        planned:false
       });
     }
 
@@ -99,3 +95,51 @@ export const Months = [
   
 
  export const Year = [today.getFullYear(),tom.getFullYear()];
+
+ export const categoryStats = [
+  {
+    category: "Work",
+    totalTime: 0,
+    totalMinutes: 0,
+    totalActivity: 0
+  },
+  {
+    category: "No Category",
+    totalTime: 0,
+    totalMinutes: 0,
+    totalActivity: 0
+  },
+  {
+    category: "Personal",
+    totalTime: 0,
+    totalMinutes: 0,
+    totalActivity: 0
+  },
+  {
+    category: "Health & Fitness",
+    totalTime: 0,
+    totalMinutes: 0,
+    totalActivity: 0
+  },
+  {
+    category: "Learning",
+    totalTime: 0,
+    totalMinutes: 0,
+    totalActivity: 0
+  },
+  {
+    category: "Workout",
+    totalTime: 0,
+    totalMinutes: 0,
+    totalActivity: 0
+  }
+];
+
+export const categoryColors = {
+  "Work": "#3B82F6",
+  "No Category": "#6B7280",
+  "Personal": "#F43F5E",
+  "Health & Fitness": "#10B981",
+  "Learning": "#8B5CF6",
+  "Workout": "#F97316"
+};

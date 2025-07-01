@@ -107,6 +107,17 @@ function Timeform() {
     setNotes("");
     setShowForm(false);
   };
+  const formcancel=()=>{
+    setActivityName("");
+    setCategory("");
+    setStartTime(null);
+    setEndTime(null);
+    setSelectedDay(null);
+    setSelectedMonth(null);
+    setSelectedYear(null);
+    setNotes("");
+    setShowForm(false);
+  }
 
   return showForm && (
     <div className="absolute top-[5rem] bg-black left-[30rem] border border-white/10 p-[1rem] flex flex-col gap-2.5 w-[30rem]">
@@ -114,7 +125,7 @@ function Timeform() {
         <p>New Activity</p>
         <FiX
           className="text-xl cursor-pointer hover:text-red-400"
-          onClick={() => setShowForm(false)}
+          onClick={() => formcancel()}
         />
       </div>
       <form className="flex flex-col" onSubmit={handleSubmit}>
