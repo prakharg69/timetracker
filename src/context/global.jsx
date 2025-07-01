@@ -13,9 +13,12 @@ export const GlobalProvider = ({ children }) => {
   const [selectedMonth, setSelectedMonth] = useState(null);
   const [selectedYear, setSelectedYear] = useState(null);
   const [notes, setNotes] = useState("");
+  const [Editing,setEditing]=useState(false);
+  const [Activity,setActivity]=useState({});
 
 
   const openForm = (slotData, ValueData) => {
+
   setStartTime({ value: slotData.start, label: slotData.start });
   setEndTime({ value: slotData.end, label: slotData.end });
   setSelectedDay({ value: ValueData.date, label: String(ValueData.date) });
@@ -23,9 +26,20 @@ export const GlobalProvider = ({ children }) => {
   setSelectedYear({ value: ValueData.Year, label: String(ValueData.Year) });
   setShowForm(true);
 };
+const EditForm =(ActivData)=>{
+  setActivity(ActivData)
+  setEditing(true);
+  setStartTime({ value: ActivData.StartTime, label: ActivData.StartTime });
+  setEndTime({ value: ActivData.EndTime, label: ActivData.EndTime });
+  setSelectedDay({ value: ActivData.Day, label: String(ActivData.Day) });
+  setSelectedMonth({ value: ActivData.Month, label: ActivData.Month });
+  setSelectedYear({ value: ActivData.Year, label: String(ActivData.Year) });
+  setShowForm(true);
+
+}
 
 
-  const contextValue = { showForm, setShowForm,activityName,setActivityName,category, setCategory,startTime, setStartTime, endTime, setEndTime,selectedDay, setSelectedDay,selectedMonth, setSelectedMonth,selectedYear, setSelectedYear,notes, setNotes,openForm
+  const contextValue = { setActivity,Activity,showForm,setEditing,Editing, setShowForm,activityName,setActivityName,category, setCategory,startTime, setStartTime, endTime, setEndTime,selectedDay, setSelectedDay,selectedMonth, setSelectedMonth,selectedYear, setSelectedYear,notes, setNotes,openForm,EditForm
  };
 
   return (

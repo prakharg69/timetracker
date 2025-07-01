@@ -12,7 +12,7 @@ const Dasbord = () => {
   const [filled, setFilled] = useState(false);
   const { summary } = useSelector((state) => state.timedataa);
   const {Activity} = useSelector((state) => state.timedataa);
-  const { openForm } = useGlobalData();
+  const { openForm,EditForm } = useGlobalData();
   useEffect(() => {
     const timer = setTimeout(() => {
       setFilled(true);
@@ -129,7 +129,7 @@ const Dasbord = () => {
             })}
           </div>
           <div className="flex flex-col mt-[1rem] gap-2.5">
-            <h1 className="mb-[1rem]">Time By Category</h1>
+            <h1 className="mb-[1rem]">Planned Activities</h1>
             {Activity.map((val, index) => {
               return (
                 <div
@@ -147,7 +147,7 @@ const Dasbord = () => {
                       <FiEdit
                         className="text-[#B0B0B0] cursor-pointer hover:text-[#E0E0E0]"
                         title="Edit"
-                    
+                      onClick={()=> EditForm(val)}
                       />
                       <FiTrash2
                         className="text-[#9A4A4A] cursor-pointer hover:text-[#D05C5C]"

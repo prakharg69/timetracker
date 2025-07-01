@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
 import { Days, Months, Year } from "./timepredata";
 import { useGlobalData } from "../context/global";
-import { AddTask } from "../Store/features/Timedata";
+import { AddTask, EditTask } from "../Store/features/Timedata";
 
 function Timeform() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ function Timeform() {
     selectedDay, setSelectedDay,
     selectedMonth, setSelectedMonth,
     selectedYear, setSelectedYear,
-    notes, setNotes
+    notes, setNotes,Editing,setEditing,setActivity,Activity
   } = useGlobalData();
 
   
@@ -79,7 +79,7 @@ function Timeform() {
  const dayInd = TimeData.findIndex((val)=> val.date === selectedDay?.value);
     const slotInd = TimeData[dayInd].slots.findIndex((val)=> val.start ===startTime?.value)
     const checkActivity = TimeData[dayInd].slots[slotInd].activityName;
-    if(checkActivity!==""){
+    if(checkActivity!=="" && !Editing){
       alert("Day is already have planes");
       return 
     }
@@ -93,8 +93,13 @@ function Timeform() {
       year: selectedYear,
       notes
     };
+    if(Editing){
+      dispatch(EditTask({ activity, oldActivity: Activity }));
+    }else{
+        dispatch(AddTask(activity));
+    }
 
-    dispatch(AddTask(activity));
+    
 
     // Reset form
     setActivityName("");
@@ -105,7 +110,9 @@ function Timeform() {
     setSelectedMonth(null);
     setSelectedYear(null);
     setNotes("");
+     setEditing(false);
     setShowForm(false);
+         
   };
   const formcancel=()=>{
     setActivityName("");
